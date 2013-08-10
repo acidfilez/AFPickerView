@@ -444,7 +444,6 @@
                 label.backgroundColor = [UIColor clearColor];
                 label.font = self.rowFont;
                 label.textColor = self.rowTextColor;
-                
                 label.textAlignment = self.rowTextAlign;
             }
             

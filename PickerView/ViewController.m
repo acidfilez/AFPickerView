@@ -202,13 +202,21 @@
     if (pickerView == daysPickerView)
         return [daysData objectAtIndex:row];
     
-    if (pickerView == defaultPickerView || pickerView == defaultPickerCustomView || defaultPickerViewResize)
+    if (pickerView == defaultPickerView)
+        return [NSString stringWithFormat:@"%i", row + 1];
+    
+    if (pickerView == defaultPickerCustomView)
+        return [NSString stringWithFormat:@"%i", row + 1];
+    
+    if (pickerView == defaultPickerViewResize)
         return [NSString stringWithFormat:@"%i", row + 1];
     
     
     //Time Pickers
-    if (pickerView == hourPickerCustomView)
+    if (pickerView == hourPickerCustomView){
+        NSLog(@"housrs moved");
         return [NSString stringWithFormat:@"%i : ", row + 1];
+    }
     
     if (pickerView == minutePickerCustomView)
         return [NSString stringWithFormat:@" %i", row + 1];
