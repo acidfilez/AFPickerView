@@ -20,6 +20,8 @@
     AFPickerView *hourPickerCustomView;
     AFPickerView *minutePickerCustomView;
     
+    AFPickerView *defaultPickerViewResize;
+    
     NSArray *daysData;
 }
 
