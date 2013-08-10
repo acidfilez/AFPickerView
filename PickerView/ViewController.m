@@ -111,10 +111,12 @@
                              resizableImageWithCapInsets:UIEdgeInsetsMake(62, 5, 62, 5)];
     
     
-    UIImage *glassImage3 = [[UIImage imageNamed:@"pickerGlass"]
-                            resizableImageWithCapInsets:UIEdgeInsetsMake(20, 5, 20, 5)];
-    
+    UIImage *glassImage3 = [UIImage imageNamed:@"pickerGlass"];
+    //Resize to half size image
     glassImage3 = [ViewController imageWithImage:glassImage3 scaledToSize:CGSizeMake(63, 24)];
+    NSLog(@"glass size %f,%f", glassImage3.size.width, glassImage3.size.height);
+    //Set insets
+    glassImage3 = [glassImage3 resizableImageWithCapInsets:UIEdgeInsetsMake(11, 5, 11, 5)];
     
     visibleRows = 5;
     
