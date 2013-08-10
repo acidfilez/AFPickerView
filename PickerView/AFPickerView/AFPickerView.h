@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
 
 @protocol AFPickerViewDataSource;
 @protocol AFPickerViewDelegate;
@@ -21,7 +24,8 @@
     UIImageView *glassImageView;
     
     int currentRow;
-    int rowsCount; 
+    int rowsCount;
+
     
     CGPoint previousOffset;
     BOOL isScrollingUp;
@@ -31,15 +35,32 @@
     NSMutableSet *visibleViews;
     
     UIFont *_rowFont;
-    CGFloat _rowIndent;
+    UIColor *_rowTextColor;
+    NSTextAlignment *_rowTextAlign;
+    CGFloat _rowIndentLeft;
+    CGFloat _rowIndentTop;
+    CGFloat _rowHeight;
+    
+    int middleRowAtIndex;
+    
 }
 
 @property (nonatomic, unsafe_unretained) id <AFPickerViewDataSource> dataSource;
 @property (nonatomic, unsafe_unretained) id <AFPickerViewDelegate> delegate;
 @property (nonatomic, unsafe_unretained) int selectedRow;
 @property (nonatomic, strong) UIFont *rowFont;
-@property (nonatomic, unsafe_unretained) CGFloat rowIndent;
+@property (nonatomic, strong) UIColor *rowTextColor;
+@property (nonatomic, unsafe_unretained) NSTextAlignment *rowTextAlign;
+@property (nonatomic, unsafe_unretained) CGFloat rowIndentLeft;
+@property (nonatomic, unsafe_unretained) CGFloat rowIndentTop;
+//@property (nonatomic, unsafe_unretained) CGFloat rowHeight;
 
+
+- (id) initWithFrameCustom:(CGRect)frame
+                 backImage:(UIImage *)backImage
+               shadowImage:(UIImage *)shadowImage
+                glassImage:(UIImage *)glassImage;
+    
 
 - (void)setup;
 - (void)reloadData;

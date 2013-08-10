@@ -23,6 +23,12 @@
 		0A3DA685147E3EB100143ADF /* pickerShadows.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DA67F147E3EB100143ADF /* pickerShadows.png */; };
 		0A3DA686147E3EB100143ADF /* pickerShadows@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DA680147E3EB100143ADF /* pickerShadows@2x.png */; };
 		0A3DA68D147E53B700143ADF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3DA68C147E53B700143ADF /* QuartzCore.framework */; };
+		72935CDC17B68A2D00A13904 /* pickerBackgroundCustom.png in Resources */ = {isa = PBXBuildFile; fileRef = 72935CD617B68A2D00A13904 /* pickerBackgroundCustom.png */; };
+		72935CDD17B68A2D00A13904 /* pickerBackgroundCustom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72935CD717B68A2D00A13904 /* pickerBackgroundCustom@2x.png */; };
+		72935CDE17B68A2D00A13904 /* pickerGlass2Custom.png in Resources */ = {isa = PBXBuildFile; fileRef = 72935CD817B68A2D00A13904 /* pickerGlass2Custom.png */; };
+		72935CDF17B68A2D00A13904 /* pickerGlass2Custom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72935CD917B68A2D00A13904 /* pickerGlass2Custom@2x.png */; };
+		72935CE017B68A2D00A13904 /* pickerGlassCustom.png in Resources */ = {isa = PBXBuildFile; fileRef = 72935CDA17B68A2D00A13904 /* pickerGlassCustom.png */; };
+		72935CE117B68A2D00A13904 /* pickerGlassCustom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72935CDB17B68A2D00A13904 /* pickerGlassCustom@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +54,12 @@
 		0A3DA67F147E3EB100143ADF /* pickerShadows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pickerShadows.png; path = AFPickerView/pickerShadows.png; sourceTree = "<group>"; };
 		0A3DA680147E3EB100143ADF /* pickerShadows@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pickerShadows@2x.png"; path = "AFPickerView/pickerShadows@2x.png"; sourceTree = "<group>"; };
 		0A3DA68C147E53B700143ADF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		72935CD617B68A2D00A13904 /* pickerBackgroundCustom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pickerBackgroundCustom.png; path = AFPickerView/pickerBackgroundCustom.png; sourceTree = "<group>"; };
+		72935CD717B68A2D00A13904 /* pickerBackgroundCustom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pickerBackgroundCustom@2x.png"; path = "AFPickerView/pickerBackgroundCustom@2x.png"; sourceTree = "<group>"; };
+		72935CD817B68A2D00A13904 /* pickerGlass2Custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pickerGlass2Custom.png; path = AFPickerView/pickerGlass2Custom.png; sourceTree = "<group>"; };
+		72935CD917B68A2D00A13904 /* pickerGlass2Custom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pickerGlass2Custom@2x.png"; path = "AFPickerView/pickerGlass2Custom@2x.png"; sourceTree = "<group>"; };
+		72935CDA17B68A2D00A13904 /* pickerGlassCustom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pickerGlassCustom.png; path = AFPickerView/pickerGlassCustom.png; sourceTree = "<group>"; };
+		72935CDB17B68A2D00A13904 /* pickerGlassCustom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pickerGlassCustom@2x.png"; path = "AFPickerView/pickerGlassCustom@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +143,7 @@
 		0A3DA687147E3F7700143ADF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				72935CD517B68A1C00A13904 /* Custom */,
 				0A3DA67B147E3EB000143ADF /* pickerBackground.png */,
 				0A3DA67C147E3EB000143ADF /* pickerBackground@2x.png */,
 				0A3DA67D147E3EB000143ADF /* pickerGlass.png */,
@@ -139,6 +152,19 @@
 				0A3DA680147E3EB100143ADF /* pickerShadows@2x.png */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		72935CD517B68A1C00A13904 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				72935CD617B68A2D00A13904 /* pickerBackgroundCustom.png */,
+				72935CD717B68A2D00A13904 /* pickerBackgroundCustom@2x.png */,
+				72935CD817B68A2D00A13904 /* pickerGlass2Custom.png */,
+				72935CD917B68A2D00A13904 /* pickerGlass2Custom@2x.png */,
+				72935CDA17B68A2D00A13904 /* pickerGlassCustom.png */,
+				72935CDB17B68A2D00A13904 /* pickerGlassCustom@2x.png */,
+			);
+			name = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +225,12 @@
 				0A3DA684147E3EB100143ADF /* pickerGlass@2x.png in Resources */,
 				0A3DA685147E3EB100143ADF /* pickerShadows.png in Resources */,
 				0A3DA686147E3EB100143ADF /* pickerShadows@2x.png in Resources */,
+				72935CDC17B68A2D00A13904 /* pickerBackgroundCustom.png in Resources */,
+				72935CDD17B68A2D00A13904 /* pickerBackgroundCustom@2x.png in Resources */,
+				72935CDE17B68A2D00A13904 /* pickerGlass2Custom.png in Resources */,
+				72935CDF17B68A2D00A13904 /* pickerGlass2Custom@2x.png in Resources */,
+				72935CE017B68A2D00A13904 /* pickerGlassCustom.png in Resources */,
+				72935CE117B68A2D00A13904 /* pickerGlassCustom@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,13 +10,6 @@
 
 @implementation ViewController
 
-#pragma mark - Synthesizatoin
-
-@synthesize numberLabel;
-@synthesize dayLabel;
-
-
-
 
 #pragma mark - View lifecycle
 
@@ -27,32 +20,140 @@
     
     daysData = [[NSArray alloc] initWithObjects:@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday", nil];
     
-    defaultPickerView = [[AFPickerView alloc] initWithFrame:CGRectMake(30.0, 30.0, 126.0, 197.0)];
+    //First Example
+    defaultPickerView = [[AFPickerView alloc] initWithFrame:
+                         CGRectMake(30.0, 30.0, 126.0, 197.0)];
     defaultPickerView.dataSource = self;
     defaultPickerView.delegate = self;
     [defaultPickerView reloadData];
-    [self.view addSubview:defaultPickerView];
     
+    //Second Example
     daysPickerView = [[AFPickerView alloc] initWithFrame:CGRectMake(30.0, 250.0, 126.0, 197.0)];
     daysPickerView.dataSource = self;
     daysPickerView.delegate = self;
     daysPickerView.rowFont = [UIFont boldSystemFontOfSize:19.0];
-    daysPickerView.rowIndent = 10.0;
+    daysPickerView.rowIndentLeft = 10.0;
     [daysPickerView reloadData];
-    [self.view addSubview:daysPickerView];
+    
+
+    //Third Example
+    UIImage *backImage = [[UIImage imageNamed:@"pickerBackgroundCustom"]
+                          resizableImageWithCapInsets:UIEdgeInsetsMake(12, 12, 12, 12)];
+    
+    UIImage *glassImage = [[UIImage imageNamed:@"pickerGlassCustom"]
+                           resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+    
+
+    int visibleRows = 5;
+    
+    //Set height depening of the glass and visible picker rows
+    CGRect framePicker = CGRectMake(30.0, 470.0, 70.0, glassImage.size.height * visibleRows);
+
+    defaultPickerCustomView = [[AFPickerView alloc] initWithFrameCustom:framePicker
+                                                              backImage:backImage
+                                                            shadowImage:nil
+                                                             glassImage:glassImage];
+    
+    defaultPickerCustomView.dataSource = self;
+    defaultPickerCustomView.delegate = self;
+    
+    defaultPickerCustomView.rowFont = [UIFont boldSystemFontOfSize:12.0];
+    defaultPickerCustomView.rowTextColor = [UIColor grayColor];
+    defaultPickerCustomView.rowTextAlign = NSTextAlignmentCenter;
+    [defaultPickerCustomView reloadData];
+    
+
+    //Four Exampe - Time
+    visibleRows = 3;
+    UIImage *glassImage2 = [[UIImage imageNamed:@"pickerGlass2Custom"]
+                            resizableImageWithCapInsets:UIEdgeInsetsMake(5, 0, 5, 0)];
+    //timeView is behind the pickers.
+    UIImageView *timeView = [[UIImageView alloc] initWithImage:backImage];
+    timeView.frame = CGRectMake(29, 690, 69, glassImage2.size.height * visibleRows);
+    
+    CGRect frameHourPicker = CGRectMake(30, 690, 40.0, glassImage2.size.height * visibleRows);
+    CGRect frameMinutePicker = CGRectMake(67, 690, 30.0, glassImage2.size.height * visibleRows); 
+    
+    hourPickerCustomView = [[AFPickerView alloc] initWithFrameCustom:frameHourPicker
+                                                              backImage:nil
+                                                            shadowImage:nil
+                                                             glassImage:glassImage2];
+    
+    hourPickerCustomView.dataSource = self;
+    hourPickerCustomView.delegate = self;
+    
+    hourPickerCustomView.rowFont = [UIFont boldSystemFontOfSize:14.0];
+    hourPickerCustomView.rowTextColor = [UIColor grayColor];
+    hourPickerCustomView.rowTextAlign = NSTextAlignmentRight;
+    [hourPickerCustomView reloadData];
+    
+    
+    minutePickerCustomView = [[AFPickerView alloc] initWithFrameCustom:frameMinutePicker
+                                                           backImage:nil
+                                                         shadowImage:nil
+                                                          glassImage:glassImage2];
+    
+    minutePickerCustomView.dataSource = self;
+    minutePickerCustomView.delegate = self;
+    
+    minutePickerCustomView.rowFont = [UIFont boldSystemFontOfSize:14.0];
+    minutePickerCustomView.rowTextColor = [UIColor grayColor];
+    minutePickerCustomView.rowTextAlign = NSTextAlignmentLeft;
+    [minutePickerCustomView reloadData];
+    
+    
+    //////////////////////////////////////////////////////////////////////////////////////////        
+    //Add Pickers to view
+    
+    [_scroll addSubview:defaultPickerView];
+    [_scroll addSubview:daysPickerView];
+    [_scroll addSubview:defaultPickerCustomView];
+  
+    [_scroll addSubview:timeView];
+    [_scroll addSubview:hourPickerCustomView];
+    [_scroll addSubview:minutePickerCustomView];
+    
+    [self setups];
 }
 
 
+//move things around
+-(void)setups{
+    //Setting for the scrollbar
+    //make room for third example
+    _scroll.contentSize = CGSizeMake(320, 900);
+    
+    //move scroll to middle to see other examples
+    [_scroll scrollRectToVisible:CGRectMake(0.0, 570, 1, 1) animated:YES];
+    
+    //Reposition Labels
+    _numberLabel.frame = CGRectMake(180.0, defaultPickerView.frame.origin.y + 100.0, 134.0, 21);
+    _dayLabel.frame = CGRectMake(180.0, daysPickerView.frame.origin.y + 100.0, 134.0, 21);
+    _numberCustomLabel.frame = CGRectMake(180, defaultPickerCustomView.frame.origin.y  + defaultPickerCustomView.frame.size.height / 2, 134.0, 21.0);
+    
+    _timeLabel.frame = CGRectMake(180, minutePickerCustomView.frame.origin.y  + minutePickerCustomView.frame.size.height / 2, 134.0, 21.0);
+    
+}
 
 
 #pragma mark - AFPickerViewDataSource
 
 - (NSInteger)numberOfRowsInPickerView:(AFPickerView *)pickerView
 {
+    //Day Picker
     if (pickerView == daysPickerView)
         return [daysData count];
     
-    return 100;
+    
+    //Time Pickers
+    if (pickerView == hourPickerCustomView)
+        return 24;
+    
+    if (pickerView == minutePickerCustomView)
+        return 60;
+    
+    //Numbers pickers
+    return 30;
 }
 
 
@@ -63,7 +164,18 @@
     if (pickerView == daysPickerView)
         return [daysData objectAtIndex:row];
     
-    return [NSString stringWithFormat:@"%i", row + 1];
+    if (pickerView == defaultPickerView || pickerView == defaultPickerCustomView)
+        return [NSString stringWithFormat:@"%i", row + 1];
+    
+    
+    //Time Pickers
+    if (pickerView == hourPickerCustomView)
+        return [NSString stringWithFormat:@"%i : ", row + 1];
+    
+    if (pickerView == minutePickerCustomView)
+        return [NSString stringWithFormat:@" %i", row + 1];
+    
+    return @"N/A";
 }
 
 
@@ -75,8 +187,21 @@
 {
     if (pickerView == daysPickerView)
         self.dayLabel.text = [daysData objectAtIndex:row];
-    else
+    
+    if (pickerView == defaultPickerCustomView)
+        self.numberCustomLabel.text = [NSString stringWithFormat:@"%i", row + 1];
+    
+    if (pickerView == defaultPickerView)
         self.numberLabel.text = [NSString stringWithFormat:@"%i", row + 1];
+    
+    
+    //Time Picker
+    if (pickerView == minutePickerCustomView || pickerView == hourPickerCustomView )
+        self.timeLabel.text = [NSString stringWithFormat:@"It's: %i:%i hrs",
+                                [hourPickerCustomView selectedRow] + 1,
+                                 [minutePickerCustomView selectedRow] + 1 ];
+
+    
 }
 
 
@@ -96,7 +221,10 @@
 - (void)viewDidUnload
 {
     [self setNumberLabel:nil];
+    [self setNumberCustomLabel:nil];
     [self setDayLabel:nil];
+    [self setScroll:nil];
+    [self setTimeLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

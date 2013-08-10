@@ -13,10 +13,23 @@
 {
     AFPickerView *defaultPickerView;
     AFPickerView *daysPickerView;
+    
+    AFPickerView *defaultPickerCustomView;
+
+    
+    AFPickerView *hourPickerCustomView;
+    AFPickerView *minutePickerCustomView;
+    
     NSArray *daysData;
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *numberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dayLabel;
+@property (strong, nonatomic) IBOutlet UILabel *numberCustomLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scroll;
+
 
 @end
