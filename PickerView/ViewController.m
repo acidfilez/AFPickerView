@@ -69,10 +69,10 @@
                             resizableImageWithCapInsets:UIEdgeInsetsMake(5, 0, 5, 0)];
     //timeView is behind the pickers.
     UIImageView *timeView = [[UIImageView alloc] initWithImage:backImage];
-    timeView.frame = CGRectMake(29, 690, 69, glassImage2.size.height * visibleRows);
+    timeView.frame = CGRectMake(29, 640, 69, glassImage2.size.height * visibleRows);
     
-    CGRect frameHourPicker = CGRectMake(30, 690, 40.0, glassImage2.size.height * visibleRows);
-    CGRect frameMinutePicker = CGRectMake(67, 690, 30.0, glassImage2.size.height * visibleRows);
+    CGRect frameHourPicker = CGRectMake(30, 640, 40.0, glassImage2.size.height * visibleRows);
+    CGRect frameMinutePicker = CGRectMake(67, 640, 30.0, glassImage2.size.height * visibleRows);
     
     hourPickerCustomView = [[AFPickerView alloc] initWithFrameCustom:frameHourPicker
                                                            backImage:nil
@@ -119,7 +119,7 @@
     visibleRows = 5;
     
     //Set height depening of the glass and visible picker rows
-    CGRect framePicker3 = CGRectMake(30.0, 800.0, 70.0, glassImage3.size.height * visibleRows);
+    CGRect framePicker3 = CGRectMake(30.0, 750.0, 70.0, glassImage3.size.height * visibleRows);
     
     defaultPickerViewResize = [[AFPickerView alloc] initWithFrameCustom:framePicker3
                                                               backImage:backImage3
